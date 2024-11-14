@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Bounce, toast } from 'react-toastify';
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 const ProductForm = () => {
   const [name, setName] = useState('');
@@ -11,20 +15,47 @@ const ProductForm = () => {
     const newProduct = {
       name,
       price: parseFloat(price),
-      description,      
+      description,
     };
 
-    axios.post('http://localhost:5000/api/products', newProduct)
+    axios.post(apiUrl +'/api/products', newProduct)
       .then(response => {
         console.log("Producto creado", response.data);
+        toast.success('Producto creado con éxito!!! 😊', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+
+        // Resetea los valores del formulario
+        setName('');
+        setPrice('');
+        setDescription('');
       })
       .catch(error => {
         console.error("Error al crear el producto", error);
+        toast.error('Error al crear el producto. 😞', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
       });
   };
 
   return (
-    <div className="container mx-auto mt-5">
+    <div className="container mx-auto my-5">
       <h1 className="text-2xl font-bold mb-4">Crear Producto</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

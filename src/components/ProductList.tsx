@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
+
 interface ProductListProps {
   searchQuery: string; // Aceptamos searchQuery como prop
 }
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const ProductList: React.FC<ProductListProps> = ({ searchQuery }) => {
   const [products, setProducts] = useState<any[]>([]);
@@ -13,7 +16,7 @@ const ProductList: React.FC<ProductListProps> = ({ searchQuery }) => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get(apiUrl +'/api/products')
       .then(response => {
 
         setProducts(response.data);
@@ -38,7 +41,7 @@ const ProductList: React.FC<ProductListProps> = ({ searchQuery }) => {
   console.log(products)
 
   return (
-    <div className="container mx-auto my-5">
+    <div className="container mx-auto pb-32 pt-24">
       <table className="min-w-full bg-white">
         <thead>
           <tr>
