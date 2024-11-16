@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<any>(null);
@@ -13,7 +15,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     // Obtener datos del producto para precargar el formulario
-    axios.get(`http://localhost:5000/api/products/${id}`)
+    axios.get(apiUrl + `/api/products/${id}`)
       .then(response => {
         console.log("Producto cargado", response.data);
         setProduct(response.data[0]);
@@ -46,7 +48,7 @@ const ProductDetail = () => {
       provider_id: product.provider_id // Asegúrate de enviar provider_id si no lo capturas en el formulario
     };
   
-    axios.put(`http://localhost:5000/api/products/${id}`, updatedFormData, {
+    axios.put(apiUrl + `/api/products/${id}`, updatedFormData, {
       headers: {
         'Content-Type': 'application/json',
       }
