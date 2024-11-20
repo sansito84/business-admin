@@ -45,7 +45,7 @@ const ProductListDelete: React.FC<ProductListProps> = ({ searchQuery }) => {
       axios.delete(apiUrl +`/api/products/${productIdToDelete}`)
         .then(() => {
           setProducts(products.filter(product => product.id !== productIdToDelete));
-          // alert('Producto eliminado con éxito');
+          
           toast.success('😊 Listo! Borraste el Producto!!! 😊', {
             position: "top-center",
             autoClose: 5000,
@@ -95,26 +95,26 @@ const ProductListDelete: React.FC<ProductListProps> = ({ searchQuery }) => {
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">Producto</th>
-            <th className="py-2 px-4 border-b">Precio</th>
-            <th className="py-2 px-4 border-b">Descripción</th>
-            <th className="py-2 px-4 border-b"></th>
-            <th className="py-2 px-4 border-b">Borrar</th>
+            <th className="py-2 px-4 border-b text-center">Precio</th>
+            <th className="py-2 px-4 border-b text-center">Descripción</th>
+            <th className="py-2 px-4 border-b text-center">Modificar</th>
+            <th className="py-2 px-4 border-b text-center">Borrar</th>
           </tr>
         </thead>
         <tbody>
           {filteredProducts.map(product => (
             <tr key={product.id}>
-              <td className="py-2 px-4 border-b">{product.name}</td>
-              <td className="py-2 px-4 border-b">${product.price}</td>
-              <td className="py-2 px-4 border-b">
+              <td className="py-2 px-4 border-b ">{product.name}</td>
+              <td className="py-2 px-4 border-b text-center">${product.price}</td>
+              <td className="py-2 px-4 border-b text-center">
                 <p className="text-teal-800">{product.description}</p>
               </td>
-              <td className="py-2 px-4 border-b">
+              <td className="py-2 px-4 border-b text-center">
                 <a href={`/producto/${product.id}/edit`} className="text-blue-500 hover:underline">
                   Modificar
                 </a>
               </td>
-              <td className="py-2 px-4 border-b">
+              <td className="py-2 px-4 border-b text-center">
                 <button 
                   className='bg-red-600 text-white font-bold py-1 px-2 rounded hover:bg-red-700 transition duration-300' 
                   onClick={() => handleDeleteClick(product.id)}

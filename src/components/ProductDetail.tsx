@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Bounce, toast } from 'react-toastify';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -54,7 +55,17 @@ const ProductDetail = () => {
       }
     })
     .then(response => {
-      alert('Producto actualizado con éxito');
+      toast.success('💪💪💪 Bien ahí!!! 💪💪💪 Actualizaste el producto con exito!!! 😊', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     })
     .catch(error => {
       console.error("Error al actualizar el producto", error);
@@ -65,7 +76,7 @@ const ProductDetail = () => {
   if (!product) return <div>Cargando...</div>;
 
   return (
-    <div className="container mx-auto mt-5">
+    <div className="container mx-auto mt-36">
       <h1 className="text-2xl font-bold mb-4">Modificar Producto</h1>
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded-lg">
         <div className="mb-4">

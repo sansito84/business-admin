@@ -21,7 +21,7 @@ const ProductForm = () => {
     axios.post(apiUrl +'/api/products', newProduct)
       .then(response => {
         console.log("Producto creado", response.data);
-        toast.success('Producto creado con éxito!!! 😊', {
+        toast.success('💪💪💪 Vamoooooo!!! 💪💪💪 Creaste el producto con éxito!!! 😊', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
