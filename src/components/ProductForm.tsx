@@ -55,9 +55,9 @@ const ProductForm = () => {
   };
 
   return (
-    <div className="container mx-auto my-5">
+    <div className="container mx-auto mt-24 mb-32 scroll-m-0">      
+      <form onSubmit={handleSubmit} className="bg-teal-100 p-6 rounded-lg shadow-lg">
       <h1 className="text-2xl font-bold mb-4">Crear Producto</h1>
-      <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700">Título del Producto</label>
           <input

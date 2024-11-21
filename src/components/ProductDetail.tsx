@@ -76,9 +76,9 @@ const ProductDetail = () => {
   if (!product) return <div>Cargando...</div>;
 
   return (
-    <div className="container mx-auto mt-36">
-      <h1 className="text-2xl font-bold mb-4">Modificar Producto</h1>
-      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded-lg">
+    <div className="container mx-auto mt-24 mb-32 scroll-m-0">      
+      <form onSubmit={handleSubmit} className="bg-teal-100 p-6 rounded-lg shadow-lg">
+      <h1 className="text-2xl font-bold">Modificar Producto</h1>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">Título del Producto</label>
           <input
